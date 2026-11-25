@@ -6,6 +6,15 @@
 | `tapf_core.h` | features, kNN and the calibration logic; no hardware code |
 | `sktrl_data.h` | the built-in dataset: 600 taps from 5 people, 10 bytes per tap |
 
+## Reading the code
+
+`main.c` is divided into 21 sections. Every function has a tag line above it, such as `/* ---- Section 14: measuring a tap ---- */`, and the list of sections is at the top of the file.
+
+- Sections 1–12: start-up and hardware.
+- Sections 13–21: the main loop and everything it calls.
+
+Inside `main()`, each call has the line number of the function it calls. `tapf_core.h` holds the kNN and calibration logic and says which section uses each function.
+
 ## Modes (joystick press opens the menu)
 
 - **Play: 6 zones:** kNN with k = 9; 6 votes are needed. The zone's LED and note play, and the LCD shows the zone and its confidence, e.g. `Z3 confidence 8/9`. With fewer than 6 votes the tap is shown as "unsure" and makes no sound.
