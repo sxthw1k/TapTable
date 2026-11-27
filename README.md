@@ -8,6 +8,43 @@ EEE G512 (Embedded Systems Design) course project by Sathwik Kumble and Krishna 
 
 **Hardware:** Keil MCBSTM32F400 board (STM32F407IG, 168 MHz), 3 × MPU6500 on SPI3, buzzer on PF8 (TIM13 PWM), the board's LCD and joystick (STMPE811 on I2C1).
 
+## Board layout
+
+The pad is a plain 35 cm × 24 cm writing pad resting on six rubber feet. The six zones are **5 cm × 5 cm squares** in a 3 × 2 grid:
+
+- 5 cm gap between neighbouring zones;
+- 5 cm from the outer zones to the left and right edges (the 24 cm sides);
+- 4.5 cm from the zones to the top and bottom edges (the 35 cm sides).
+
+Across: 5 + 5 + 5 + 5 + 5 + 5 + 5 = 35 cm. Down: 4.5 + 5 + 5 + 5 + 4.5 = 24 cm.
+
+The three sensors (S1–S3) are glued underneath, in a triangle:
+
+```
+               35 cm wide, zones 5 × 5 cm
+ +------------------------------------------+
+ |                                          |  4.5
+ |      +----+      +----+      +----+      |
+ |      | Z1 |      | Z2 |      | Z3 |      |  5
+ |      | S1 |      |    |      | S3 |      |
+ |      +----+      +----+      +----+      |
+ |                                          |  5   (24 cm tall)
+ |      +----+      +----+      +----+      |
+ |      | Z4 |      | Z5 |      | Z6 |      |  5
+ |      |    |      | S2 |      |    |      |
+ |      +----+      +----+      +----+      |
+ |                                          |  4.5
+ +------------------------------------------+
+```
+
+| Sensor | Under zone | Chip select |
+|---|---|---|
+| S1 | Z1 (top left) | PF6 |
+| S2 | Z5 (bottom middle) | PF7 |
+| S3 | Z3 (top right) | PF10 |
+
+With the sensors in a triangle, every zone has a different nearest and farthest sensor, so each zone gives its own pattern.
+
 ## Folders
 
 | Folder | What it is |
